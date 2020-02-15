@@ -6,21 +6,16 @@ import java.util.List;
 
 public class App {
     public static void main(String[] args) throws ParseException {
-        Student zhangSan = new Student("张三", "001", "2019.02.11");
-        System.out.println(zhangSan);
-
-        Student liSi = new Student("李四", "002", "2019.02.10");
-        System.out.println(liSi);
-
-        Student wangWu = new Student("王五", "001", "2019.02.09");
-        System.out.println(wangWu);
-
         List<Student> students = new ArrayList<>();
-        students.add(zhangSan);
-        students.add(liSi);
-        students.add(wangWu);
+        students.add(new Student("张三", "001", "2019.02.11"));
+        students.add(new Student("李四", "002", "2019.02.10"));
+        students.add(new Student("王五", "001", "2019.02.09"));
 
         Teacher teacher = new Teacher("张龙", students);
-        List<Student> checkStudent = teacher.checkStudent();
+        System.out.println("下面同学的学号重复：");
+        List<Student> repeatStudent = teacher.checkStudent();
+        for (Student student : repeatStudent) {
+            System.out.println(student);
+        }
     }
 }

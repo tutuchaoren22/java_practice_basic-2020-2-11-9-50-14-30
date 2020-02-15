@@ -1,7 +1,9 @@
 package com.thoughtworks;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Teacher {
     private String name;
@@ -17,12 +19,10 @@ public class Teacher {
 
     public List<Student> checkStudent() {
         List<Student> repeatStudent = new ArrayList<>();
-        for (int i = 0; i < this.studentList.size(); i++) {
-            for (int j = i + 1; j < this.studentList.size(); j++) {
-                if (this.studentList.get(j).equals(this.studentList.get(i))) {
-                    repeatStudent.add(this.studentList.get(j));
-                    System.out.println(studentList.get(j).getName() + "同学的学号发生重复。");
-                }
+        Set<Student> checkedStudents = new HashSet<>();
+        for (Student student : this.studentList) {
+            if (!checkedStudents.add(student)) {
+                repeatStudent.add(student);
             }
         }
         return repeatStudent;
