@@ -20,6 +20,10 @@ public class Student {
         this.enrollmentDate = simpleDateFormat.parse(enrollmentDate);
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -35,9 +39,7 @@ public class Student {
 
     @Override
     public String toString() {
-//        SimpleDateFormat simpleDateFormatOfYear = new SimpleDateFormat("yyyy");
-//        int schoolAge = Integer.parseInt(simpleDateFormatOfYear.format(new Date())) - Integer.parseInt(simpleDateFormatOfYear.format(enrollmentDate));
-        int schoolAge  = new Date().getYear()- enrollmentDate.getYear() ;
+        int schoolAge = new Date().getYear() - enrollmentDate.getYear();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年M月dd日");
         return "我叫" + name + "，我的学号是" + studentId + "，" + simpleDateFormat.format(enrollmentDate) + "入学，学龄" + schoolAge + "年";
     }
